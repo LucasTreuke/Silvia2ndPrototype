@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="App.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
     <div class="content">
             <h1>Avaliações</h1>
@@ -28,7 +29,7 @@
                 <h2>sentimentos</h2>
                 <input type="hidden" name="sentimento" id="input_sentimento"></input>
                 <div class="sentimentBox">
-                    <div onClick={handleCategoryClick} class="category box1">
+                    <div onClick="handleCategoryClick(e)" class="category box1">
                         <h3 class="sentimentKind">Indisposto Bom</h3>
                         <div onClick={handleSentimentClick} class="box1">
                             <p class="sentiment">Sentimento 1</p>
@@ -43,7 +44,7 @@
                             <p class="sentiment">Sentimento 4</p>
                         </div>
                     </div>
-                    <div onClick={handleCategoryClick} class="category box2">
+                    <div onClick="handleCategoryClick(e)" class="category box2">
                         <h3 class="sentimentKind">Disposto Bom</h3>
                         <div onClick={handleSentimentClick} class="box1">
                             <p class="sentiment">Sentimento 1</p>
@@ -58,7 +59,7 @@
                             <p class="sentiment">Sentimento 4</p>
                         </div>
                     </div>
-                    <div onClick={handleCategoryClick} class="category box3">
+                    <div onClick="handleCategoryClick(e)" class="category box3">
                         <h3 class="sentimentKind">Indisposto Ruim</h3>
                         <div onClick={handleSentimentClick} class="box1">
                             <p class="sentiment">Sentimento 1</p>
@@ -73,7 +74,7 @@
                             <p class="sentiment">Sentimento 4</p>
                         </div>
                     </div>
-                    <div onClick={handleCategoryClick} class="category box4">
+                    <div onClick="handleCategoryClick(e)" class="category box4">
                         <h3 class="sentimentKind">Disposto Ruim</h3>
                         <div onClick={handleSentimentClick} class="box1">
                             <p class="sentiment">Sentimento 1</p>
@@ -117,28 +118,28 @@
 
 <script>
 
-const Alunos = () => {
-    const handleCategoryClick = event => {
-        document.getElementsByClassName("sentimentBox")[0].classList.add("category-selected");
-        event.currentTarget.classList.add("selected");
-        setTimeout(function(e){
-            e.classList.add("avaliable");
-        }, 140, event.currentTarget);
-    }
-
-    const handleSentimentClick = event => {
-        if (event.currentTarget.parentElement.classList.contains("avaliable")){
-            event.currentTarget.classList.add("selected");
+document.querySelectorAll(".category").forEach(element => {
+        element.addEventListener("click", function(){
+            document.getElementsByClassName("sentimentBox")[0].classList.add("category-selected");
+            this.classList.add("selected");
+            setTimeout(function(e){
+                e.classList.add("avaliable");
+            }, 140, this);
+        })
+});
+document.querySelectorAll(".sentimentBox .sentiment").forEach(element => {
+    element.parentElement.addEventListener("click", function(){
+        if (this.parentElement.classList.contains("avaliable")){
+            this.classList.add("selected");
             document.getElementsByClassName("sentimentBox")[0].classList.add("sentiment-selected");
-            document.getElementById("input_sentimento").value = event.currentTarget.getElementsByClassName("sentiment")[0].innerHTML;
-            let color = getComputedStyle(event.currentTarget).getPropertyValue("--background-color")
+            document.getElementById("input_sentimento").value = this.getElementsByClassName("sentiment")[0].innerHTML;
+            color = getComputedStyle(this).getPropertyValue("--background-color")
             document.getElementById("submit").style.setProperty("--background-color", color);
             document.getElementById("submit").classList.add("sentiment-selected");
             setTimeout(function(e){
                 document.getElementById("input_intensidade").parentElement.classList.add("shadow-filter");
-            }, 140, event.currentTarget);
+            }, 140, this);
         }
-    }
-}   
+    })
+});
 </script>
-  
