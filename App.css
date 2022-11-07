@@ -4,13 +4,25 @@ body {
   --cor-disciplina: rgb(40, 145, 221);
 }
 
+iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+img{
+  max-width: 100%;
+}
+
 .shadow-filter {
   -webkit-filter: drop-shadow(0px 2px 2px rgba(24, 18, 72, 0.3));
           filter: drop-shadow(0px 2px 2px rgba(24, 18, 72, 0.3));
 }
 
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+  font-variation-settings: 'FILL' 1,
+ 'wght' 700,
+ 'GRAD' 0,
+ 'opsz' 48;
 }
 
 body {
