@@ -4,9 +4,26 @@ body {
   --cor-disciplina: rgb(40, 145, 221);
 }
 
+#update_insights:active {
+  border: 4px solid #89f789;
+  padding: 16px 11px;
+  color: #2f7d2f;
+  text-shadow: 0 0 2px #17ea3e;
+}
+
+.scroll-down-tip{
+  margin-bottom: 100px;
+}
+
+.insight{
+  position: relative;
+  padding: 20px;
+  padding-bottom: 148px;
+}
+
 iframe{
   width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   border: none;
 }
 img{
@@ -43,7 +60,6 @@ body .content {
   max-width: min(100vw, 450px);
   overflow-x: hidden;
   background-color: #fdfdfa;
-  padding: 20px;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -415,6 +431,7 @@ body .content textarea {
   margin-top: 5px;
   border-radius: 10px;
   border: 1px solid #757575;
+  padding: 5px;
 }
 
 body .content button[type="submit"] {
@@ -481,11 +498,15 @@ button {
           justify-content: center;
 }
 
-.insight-status #update_insights {
-  padding: 25px 30px;
+#update_insights {
+  padding: 20px 15px;
+  width: 85%;
   border: 1px solid #757575;
   border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s;
 }
+
 
 .insight-status #update_insights span {
   margin-right: 10px;
@@ -500,21 +521,10 @@ button {
 
 .content.snap .insight {
   scroll-snap-align: start;
-  height: 100vh;
-  width: 100%;
+  scroll-snap-align: start;
+  height: calc(100vh - 40px);
+  width: calc(100% - 40px);
   /* simple breathing animation */
-}
-
-.content.snap .insight[data-page="2"] {
-  background-color: #dfdfda;
-}
-
-.content.snap .insight[data-page="3"] {
-  background-color: #fdfdfa;
-}
-
-.content.snap .insight[data-page="4"] {
-  background-color: #dfdfda;
 }
 
 .content.snap .insight h1 {
@@ -584,7 +594,7 @@ button {
 }
 
 .footer {
-  height: 64px;
+  height: 128px;
   background: #fdfdfa;
   position: fixed;
   left: 0;
@@ -597,18 +607,23 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.footer .update-insight{
+  height: 80px;
+  width: 100%;
+  text-align: center;
 }
 
 .footer a {
   width: 50px;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
+  text-align: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
